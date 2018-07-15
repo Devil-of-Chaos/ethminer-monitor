@@ -350,6 +350,7 @@ p a { color: #000000; }
 	.feature-box .feature-footer { padding: 16px 0; }
 	
 	.feature-box { margin-bottom: 10px; width: auto; }
+	.feature-box.large { widht: 100%; }
 }
 
 /* ------------------------------------------------------------ *\
