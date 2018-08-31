@@ -119,7 +119,7 @@
 										$('#'+i+'_'+config_key+'_'+gpu_key+'_GPUBOX').removeClass('error').removeClass('online').addClass('paused');
 									} else if (key == 'MATH_HASHRATE' && value == 0){
 										$('#'+i+'_'+config_key+'_'+gpu_key+'_GPUBOX').removeClass('paused').removeClass('online').addClass('error');
-									} else {
+									} else if ((key == 'ISPAUSED' && value == 0) OR (key == 'MATH_HASHRATE' && value != 0)){
 										$('#'+i+'_'+config_key+'_'+gpu_key+'_GPUBOX').removeClass('error').removeClass('paused').addClass('online');
 									}
 								});
