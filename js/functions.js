@@ -13,6 +13,38 @@
   
 	$doc.ready(function() {
 		
+		$('.toggle_gpu').click(function(event){
+			event.preventDefault();
+			var $toggle = $(this).attr('data-toggle');
+			var check;
+			if ($toggle == 'deactivate'){
+				check = confirm('Do you really want to deactivate GPU?');
+			} else {
+				check = confirm('Do you really want to activate GPU?');
+			}
+			if (check == true) {
+				
+				var $content = 'toggle';
+				var $id = $('#id').val();
+				var $gpuID = $(this).attr('data-id');
+				
+				var $url = '/lib/functions.php?content='+$content;
+				if ($id) $url = $url+'&id='+$id;
+				if ($gpuID) $url = $url+'&gpuID='+$gpuID;
+				if ($toggle) $url = $url+'&toggle='+$toggle;
+	    	
+				$.get($url);
+				
+				if ($toggle == 'deactivate'){
+					$(this).attr('data-toggle', 'activate');
+					$(this).html('activate');
+				} else {
+					$(this).attr('data-toggle', 'deactivate');
+					$(this).html('deactivate');
+				}
+			}
+		});
+		
 		$('.open-nav').click(function(event){
 			event.preventDefault();
 			$(this).find('i').toggleClass('close');
@@ -83,6 +115,13 @@
 							$.each(data[i][config_key], function(gpu_key, gpu_value) {
 								$.each(data[i][config_key][gpu_key], function(key, value) {
 									if ($('#'+i+'_'+config_key+'_'+gpu_key+'_'+key)) $('#'+i+'_'+config_key+'_'+gpu_key+'_'+key).html(value);
+									if (key == 'ISPAUSED' && value == 1) {
+										$('#'+i+'_'+config_key+'_'+gpu_key+'_GPUBOX').removeClass('error').removeClass('online').addClass('paused');
+									} else if (key == 'MATH_HASHRATE' && value == 0){
+										$('#'+i+'_'+config_key+'_'+gpu_key+'_GPUBOX').removeClass('paused').removeClass('online').addClass('error');
+									} else {
+										$('#'+i+'_'+config_key+'_'+gpu_key+'_GPUBOX').removeClass('error').removeClass('paused').addClass('online');
+									}
 								});
 							});
 						}
