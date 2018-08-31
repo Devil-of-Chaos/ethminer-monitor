@@ -5,3 +5,6 @@ Feel free to Donate: <a href='https://etherscan.io/address/0x34b8abe3399f25cf083
 
 
 Add your mining rigs in file <a href='https://github.com/Devil-of-Chaos/ethminer-monitor/blob/master/lib/functions.php'>/lib/functions.php</a>
+
+
+Now support activate/deactivate GPU still need to authenticate user, so be sure to block external use or add an htaccess auth
