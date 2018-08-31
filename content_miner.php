@@ -81,7 +81,11 @@ foreach ($return_data AS $return_key => $return){
 		}
 		print "
 				<li>
-					<div class='feature-box'>
+					<div id='".$return_key."_GPU_".$gpu_key."_GPUBOX' class='feature-box ";
+		if ($gpu['ISPAUSED'] == 1) print "paused";
+		elseif($gpu['MATH_HASHRATE'] == 0) print "error";
+		else print "online";
+		print "'>
 						<div class='feature-head'>GPU ".$i." Index ".$gpu_key."</div><!-- /.feature-head -->
 						<div class='feature-content'>
 							<ol>
@@ -95,6 +99,11 @@ foreach ($return_data AS $return_key => $return){
 		print "
 							</ol>
 						</div><!-- /.feature-content -->
+						<div class='feature-footer'>";
+		if ($gpu['ISPAUSED'] == 1) print "<a href='#' data-id='".$gpu_key."' data-toggle='activate' class='toggle_gpu'>activate</a>";
+		else  print "<a href='#' data-id='".$gpu_key."' data-toggle='deactivate' class='toggle_gpu'>deactivate</a>";
+		print "
+						</div><!-- /.feature-footer -->
 					</div><!-- /.feature-box -->
 				</li>";
 		$col ++;
