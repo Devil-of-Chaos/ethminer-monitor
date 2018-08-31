@@ -335,6 +335,11 @@ p a { color: #000000; }
 
 .feature-box .feature-footer { padding: 15px 0; margin-top: 29px; color: #ffffff; background: #000000; font-family: 'Rajdhani', sans-serif; font-weight: 600; }
 .feature-box .feature-footer .price { font-size: 40px; margin-bottom: 5px; }
+.feature-box .feature-footer a { display: block; color: #ffffff; }
+
+.feature-box.online { background: #1ba24a; }
+.feature-box.paused { background: #f29b00; }
+.feature-box.error { background: #b60001; }
 
 
 @media (max-width: 1024px){
