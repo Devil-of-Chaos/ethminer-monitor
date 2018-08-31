@@ -24,6 +24,7 @@ if ($config['ID'] == $id){
 			$y = 0;
 			foreach ($gpu_hashrate AS $i => $gpu){
 				$return_data[$config_key]['GPU'][$i]['HASHRATE'] = $h->formatHashrate($gpu);
+				$return_data[$config_key]['GPU'][$i]['MATH_HASHRATE'] = $gpu;
 				$return_data[$config_key]['GPU'][$i]['TEMP'] = $gpu_data[$y]." °C";
 				$y++;
 				$return_data[$config_key]['GPU'][$i]['FAN'] = $gpu_data[$y]."%";
